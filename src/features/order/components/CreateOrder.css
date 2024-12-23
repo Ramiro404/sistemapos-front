@@ -1,0 +1,13 @@
+.flex-container{
+    display: flex;
+    flex-direction: row;
+
+}
+.flex-products{
+    display: flex;
+    flex-direction: column;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
