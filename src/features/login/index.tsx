@@ -1,9 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-// import { decodeJwtLogin, login } from "./services/LoginService";
 import { useNavigate } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
-import { Endpoint } from "../../utils/SistemaPOSUrl";
-import { Token } from "../../models/Token";
 import { useAlert } from "../../hooks/useAlert";
 import { Loader } from "../../components/Loader";
 import { login } from "./services/LoginService";
@@ -24,6 +20,14 @@ export function LoginPage(): JSX.Element {
   const [userInput, setUserInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.body.classList.add("login-bg");
+
+    return () => {
+      document.body.classList.remove("login-bg");
+    }
+  }, []);
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();

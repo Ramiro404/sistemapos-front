@@ -3,6 +3,7 @@ import { BaseResponse, IBaseResponse } from "../../../models/BaseResponse.model"
 import { BaseSuccess } from "../../../models/BaseSuccess.model";
 import { Producto } from "../../../models/Producto.model";
 import axios, { AxiosResponse } from "axios";
+import { ProductoInventario } from "../../../models/ProductoInventario.model";
 
 const baseUrl = process.env.REACT_APP_BASE_URL + "/Producto";
 
@@ -41,4 +42,12 @@ async function deleteProduct(id:number): Promise<BaseResponse<void>> {
     return data;
 }
 
-export { createProduct, listProduct, editProduct, getProductById, deleteProduct };
+async function addProductInventory(productInventory:ProductoInventario): Promise<BaseResponse<void>>{
+    const { data }:AxiosResponse<BaseResponse<void>> = await axios.patch(
+        baseUrl + "/ingresarInventario",
+        productInventory
+    );
+    return data;
+}
+
+export { createProduct, listProduct, editProduct, getProductById, deleteProduct, addProductInventory };
