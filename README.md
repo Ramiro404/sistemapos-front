@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# Sistema de punto de venta de Ferreteria XYZ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Iniciar proyecto
 
-## Available Scripts
-
-In the project directory, you can run:
+En el directorio del proyecto, ejecuta el siguiente comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+El proyecto se ejecuta en el puerto 3000.\
+Abre [http://localhost:3000](http://localhost:3000) para visualizarlo en tu navegador.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Ferreteria XYZ
 
-### `npm test`
+La aplicacion consiste en un sistema de punto de venta que permite gestinar usuarios, clientes, productos y realizar pedidos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A continuacion se enlistan las funcionalidades del sistema.
 
-### `npm run build`
+## Inicio de sesion
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+En la primer pantalla aparecera un formulario con los campos de "Usuario" y "Password" los cuales deben ser llenados adecuadamente. Al finalizar se debe hacer click en el boton "Ingresar" para acceder al sistema.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Panel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+En esta pagina se podra visualizar una barra de navegacion con las siguientes opciones: usuario, producto, pedido y facturar.
 
-### `npm run eject`
+Para acceder a cada seccion se debe hacer click en el nombre correspondiente.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usuario
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+En esta seccion nos encontramos con opciones para gestionar usuarios en el sistema. El menu de navegacion cuenta con las siguientes secciones: crear nuevo usuario, modificar usuario, eliminar usuario y regresar a inicio.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para acceder a su respectiva pagina es necesario hacer click en el nombre correspondiente.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Crear nuevo usuario
 
-## Learn More
+Esta pagina muestra un formulario para crear un nuevo usuario con los siguientes campos: 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Nombre, nombre del usuario ,de tipo texto
+* Apellido paterno, apellido paterno del usuario,de tipo texto
+* Apellido materno, apellido materno del usuario, de tipo texto
+* Usuario, nombre de usuario para ingresar al sistema,de tipo texto
+* Password, contrasena del usuario para ingresar al sistema, de tipo texto
+* Hora entrada, hora de entrada laboral del usuario ,de tipo tiempo
+* Hora salida, hora de salida laboral del usuario,de tipo tiempo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Factura
+
+Esta seccion trata sobre las facturas de los pedidos correspondientes a un cliente.
+
+### Imprimir factura
+
+Muestra una tabla con las siguientes columnas:
+* (#) representa el numero de la fila 
+* Numero de documento, representa el folio del documento 
+* Unidades, representa la cantidad total de productos del pedido 
+* Fecha, representa la fecha de facturacion
+* ---, muestra el boton de imprimir la factura en formato pdf
+
+
+
+
+
+
+

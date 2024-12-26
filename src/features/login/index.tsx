@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../hooks/useAlert";
 import { Loader } from "../../components/Loader";
 import { login } from "./services/LoginService";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, ThemeProvider } from "@mui/material";
 
 import "./index.css";
+import { theme } from "../../utils/Color";
 
 interface LoginForm {
   usuario: string;
@@ -16,7 +17,6 @@ export function LoginPage(): JSX.Element {
   const navigate = useNavigate();
   const { errorAlert } = useAlert();
 
-  // const [loginForm, setLoginForm] = useState<LoginForm | null>(null);
   const [userInput, setUserInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,11 +26,12 @@ export function LoginPage(): JSX.Element {
 
     return () => {
       document.body.classList.remove("login-bg");
-    }
+    };
   }, []);
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     login(userInput, passwordInput)
       .then((res) => {
         navigate({
@@ -51,28 +52,31 @@ export function LoginPage(): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className="container">
-        <form onSubmit={handleSubmit} className="flex">
-          <TextField
-            id="user"
-            label="Usuario"
-            variant="outlined"
-            onChange={onChangeUser}
-          />
-          <br/>
-          <TextField
-            id="password"
-            label="Password"
-            variant="outlined"
-            onChange={onChangePassword}
-          />
-          <br/>
-          <Button variant="contained" type="submit">
-            Ingresar
-          </Button>
-        </form>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="container">
+          <form onSubmit={handleSubmit} className="flex">
+            <h1 style={{ color: "black" }}>Bienvenido a ferreteria XYZ</h1>
 
+            <TextField
+              id="user"
+              label="Usuario"
+              variant="outlined"
+              onChange={onChangeUser}
+            />
+            <br />
+            <TextField
+              id="password"
+              label="Password"
+              variant="outlined"
+              onChange={onChangePassword}
+            />
+            <br />
+            <Button variant="contained" type="submit" size="large">
+              Ingresar
+            </Button>
+          </form>
+        </div>
+      </ThemeProvider>
       {loading && <Loader />}
     </React.Fragment>
   );

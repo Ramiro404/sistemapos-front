@@ -11,8 +11,11 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Stack,
   TextField,
+  ThemeProvider,
 } from "@mui/material";
+import { theme } from "../../../utils/Color";
 
 export function CreateProduct(): JSX.Element {
   const {
@@ -62,75 +65,94 @@ export function CreateProduct(): JSX.Element {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-        sx={{width: 200}}
-          error={!!errors.nombre}
-          type="text"
-          label="Nombre"
-          variant="standard"
-          {...register("nombre", { required: true })}
-        />
+      <ThemeProvider theme={theme}>
+        <h1>Agregar un nuevo producto</h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack direction={"row"} spacing={3}>
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.nombre}
+              type="text"
+              label="Nombre"
+              variant="standard"
+              {...register("nombre", { required: true })}
+            />
 
-        <TextField
-        sx={{width: 200}}
-          error={!!errors.valorUnitario}
-          type="number"
-          label="Valor Unitario"
-          variant="standard"
-          {...register("valorUnitario", { required: true })}
-        />
-        <br /><br/>
-        <FormControl sx={{width: 200}}>
-          <InputLabel>Unidad de medida</InputLabel>
-          <Select variant="standard" {...register("unidadMedida", { required: true })}>
-            {UNIT_OF_MEASUREMENT.map((unit) => (
-              <MenuItem value={unit}>{unit}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.valorUnitario}
+              type="number"
+              label="Valor Unitario"
+              variant="standard"
+              {...register("valorUnitario", { required: true })}
+            />
+          </Stack>
+          <br/>
+          <Stack direction={"row"} spacing={3}>
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.medida}
+              type="text"
+              label="Medida"
+              variant="standard"
+              {...register("medida", { required: true })}
+            />
+            <FormControl sx={{ width: 200 }}>
+              <InputLabel>Unidad de medida</InputLabel>
+              <Select
+                variant="standard"
+                margin="dense"
+                {...register("unidadMedida", { required: true })}
+              >
+                {UNIT_OF_MEASUREMENT.map((unit) => (
+                  <MenuItem value={unit}>{unit}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-        <TextField
-        sx={{width: 200}}
-          error={!!errors.medida}
-          type="text"
-          label="Medida"
-          variant="standard"
-          {...register("medida", { required: true })}
-        />
-        <br />
-        <TextField
-        sx={{width: 200}}
-          error={!!errors.peso}
-          type="number"
-          label="Peso (kg)"
-          variant="standard"
-          {...register("peso", { required: true })}
-        />
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.peso}
+              type="number"
+              label="Peso (kg)"
+              variant="standard"
+              {...register("peso", { required: true })}
+            />
+          </Stack>
+                <br/>
+          <Stack direction={"row"} spacing={3}>
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.stock}
+              type="number"
+              label="Stock"
+              variant="standard"
+              {...register("stock", { required: true })}
+            />
 
-        <TextField
-          sx={{width: 200}}
-          error={!!errors.volumenEmpaque}
-          type="text"
-          label="Volumen"
-          variant="standard"
-          {...register("volumenEmpaque", { required: true })}
-        />
-        <br />
-        <TextField
-        sx={{width: 200}}
-          error={!!errors.stock}
-          type="number"
-          label="Stock"
-          variant="standard"
-          {...register("stock", { required: true })}
-        />
-        <br />
+            <TextField
+              sx={{ width: 200 }}
+              margin="dense"
+              error={!!errors.volumenEmpaque}
+              type="text"
+              label="Volumen"
+              variant="standard"
+              {...register("volumenEmpaque", { required: true })}
+            />
+          </Stack>
 
-        <Button type="submit" size="large" variant="contained">
-          Guardar
-        </Button>
-      </form>
+          <br />
+
+          <Button type="submit" size="large" variant="contained">
+            Guardar
+          </Button>
+        </form>
+      </ThemeProvider>
     </React.Fragment>
   );
 }
